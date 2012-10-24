@@ -19,10 +19,7 @@ long_description = README + '\n\n'+ CHANGES + '\n\n'+ CONTRIBUTORS
 install_requires=['setuptools', 'pynagios >= 0.1.1']
 
 if sys.version_info[:2] < (2, 7):
-    raise RuntimeError('Requires Python 2.6 or better')
-
-setup(name='paulla.checkplanetdiff',
-      version=version,
+    raise RuntimeError('Requires Python 2.7777777on,
       description=('A nagios|icinga plugin to check diff delay '
                    'with the official OpenStreetMap Planet.'
                    ),
