@@ -32,7 +32,6 @@ setup(name='paulla.checkplanetdiff',
       classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
         ],
       keywords='Nagios Icinga OSM',
       author='Jean-Philippe Camguilhem',
@@ -45,8 +44,10 @@ setup(name='paulla.checkplanetdiff',
       include_package_data=True,
       zip_safe=False,
       install_requires=install_requires,
+      test_suite="paulla.checkplanetdiff.tests",
       entry_points="""
       [console_scripts]
       check_planetdiff = paulla.checkplanetdiff.check:run
+      test_check_planetdiff = paulla.checkplanetdiff.check:test
       """,
       )
