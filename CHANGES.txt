@@ -1,14 +1,9 @@
 Changelog
 =========
 
-0.1
-----
 
-- Frist version used in production at http://www.paulla.asso.fr
-  [Jean-Philippe Camguilhem]
-
-0.1-dev (unreleased)
---------------------
+0.1 (2012-10-26)
+----------------
 
 - Package created using templer
   [Jean-Philippe Camguilhem]
