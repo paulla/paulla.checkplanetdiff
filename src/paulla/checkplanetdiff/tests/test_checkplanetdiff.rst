@@ -1,8 +1,10 @@
-'Nagios like' synchronise delay OSM Planet check
+
+================================================
+Nagios like' synchronise delay OSM Planet check
 =================================================
 
 
-neccessary stuff
+necessary stuff
 
     >>> import glob
     >>> import subprocess
@@ -14,12 +16,26 @@ neccessary stuff
     ...         return state_file.read().splitlines()
     ...
 
+Use case
+==========
+
+The check is simple and robust, no database query.
+
+Delay is just datetime.datetime.utcnow() - OSM timestamp in state.txt (usaualy /home/mapnik.osmosis/state.txt)
+
+More infos here http://wiki.openstreetmap.org/wiki/Minutely_Mapnik
+
+We fake 3 state files with three different timestamp (see tests/ directory). 
+
 We have to fake now according to tests files states.
+
+    >>> now = datetime(2012, 10, 23, 20, 4, 30) # see test function
 
 Real check is datetime.datetime.utcnow()
 
-    >>> now = datetime(2012, 10, 23, 20, 4, 30)
+Warning and critical thresholds are respectively 3600 and 21600 seconds (1 and 6 hours)
 
+Time to work
 
 Less than 1 hour returns OK
 --------------------------------

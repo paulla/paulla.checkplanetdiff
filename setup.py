@@ -7,14 +7,17 @@ from setuptools import setup, find_packages
 version = '0.1'
 
 here = os.path.abspath(os.path.dirname(__file__))
+tests_dir = os.path.join(here, 'src/paulla/checkplanetdiff/tests/')
 try:
     README = open(os.path.join(here, 'README.rst')).read()
+    TESTS = open(os.path.join(tests_dir, 'test_checkplanetdiff.rst')).read()
     CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
     CONTRIBUTORS = open(os.path.join(here, 'CONTRIBUTORS.txt')).read()
 except IOError:
     README = CHANGES = CONTRIBUTORS = ''
 
-long_description = README + '\n\n'+ CHANGES + '\n\n'+ CONTRIBUTORS
+long_description = README + '\n\n' + TESTS + '\n\n' + CHANGES \
+                   + '\n\n'+ CONTRIBUTORS
 
 install_requires=['setuptools', 'pynagios >= 0.1.1']
 
@@ -31,7 +34,7 @@ setup(name='paulla.checkplanetdiff',
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         ],
       keywords='Nagios Icinga OSM',
       author='Jean-Philippe Camguilhem',

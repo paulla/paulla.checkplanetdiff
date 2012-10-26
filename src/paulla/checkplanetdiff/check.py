@@ -12,7 +12,7 @@ from pynagios import Plugin, make_option, Response, UNKNOWN
 
 
 class CheckPlanetDiff(Plugin):
-    """Plugin Check delay."""
+    """Plugin OSM Check delay."""
 
     statefile = make_option("--state-file", dest="state-file")
     perfdata = make_option("-p", dest="perf-data", action="store_true")
