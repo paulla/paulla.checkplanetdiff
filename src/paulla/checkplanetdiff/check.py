@@ -15,18 +15,12 @@ class CheckPlanetDiff(Plugin):
     """Plugin Check delay."""
 
     statefile = make_option("--state-file", dest="state-file")
-
-    def state_file_exists(self, statefile_path):
-        """Catch bad statefile path."""
-
-        if not os.path.isfile(statefile_path):
-            msg = '%s filestate not found' % statefile_path
-            return Response(UNKNOWN, msg).exit()
+    perfdata = make_option("-p", dest="perf-data", action="store_true")
 
     def get_last_update(self, now):
         """Get sequence number and diff time from statefile."""
 
-        self.state_file_exists(self.options.statefile)
+        #self.state_file_exists(self.options.statefile)
 
         ts_format = '%Y-%m-%dT%H\\:%M\\:%SZ'
         with open(self.options.statefile) as f_state:
@@ -41,8 +35,18 @@ class CheckPlanetDiff(Plugin):
     def check(self, now):
         """Check delay value."""
         msg = 'delay : %d, sequence number : %s'
-        delay, seq_nber = self.get_last_update(now)
-        result = self.response_for_value(delay, msg % (int(delay), seq_nber))
+        delay = self.options.critical.end + 1
+        seq_nber = 0
+        
+        if os.path.isfile(self.options.statefile):
+            delay, seq_nber = self.get_last_update(now)
+
+        result = self.response_for_value(int(delay), msg % (int(delay),
+                                                            seq_nber))
+        if self.options.perfdata:
+            result.set_perf_data("delayed", int(delay),'s',
+                                 str(int(self.options.warning.end)),
+                                 str(int(self.options.critical.end)))
         return result
 
 

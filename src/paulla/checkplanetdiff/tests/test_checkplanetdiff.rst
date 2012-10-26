@@ -43,6 +43,12 @@ String output
     >>> p_ok.stdout.read()
     'OK: delay : 28, sequence number : 59592\n'
 
+with perfdata option
+
+    >>> cmd_ok = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file %s -p" % state_file_ok 
+    >>> p_ok = subprocess.Popen(cmd_ok.split(), stdout=subprocess.PIPE)
+    >>> p_ok.stdout.read()
+    'OK: delay : 28, sequence number : 59592|delayed=28s;3600;21600;;\n'
 
 Delay between 1 hour and 6 returns WARNING
 -------------------------------------------
@@ -66,6 +72,12 @@ String output
     >>> p_warn.stdout.read()
     'WARN: delay : 13227, sequence number : 59372\n'
 
+with perfdata option
+
+    >>> cmd_warn = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file %s -p" % state_file_warn
+    >>> p_warn = subprocess.Popen(cmd_warn.split(), stdout=subprocess.PIPE)
+    >>> p_warn.stdout.read()
+    'WARN: delay : 13227, sequence number : 59372|delayed=13227s;3600;21600;;\n'
 
 More than 6 hours returns CRITICAL
 ----------------------------------
@@ -89,19 +101,33 @@ String output
     >>> p_crit.stdout.read()
     'CRIT: delay : 34827, sequence number : 59012\n'
 
+with perfdata option
 
-Non existant state file returns UNKNOWN
----------------------------------------
+    >>> cmd_crit = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file %s -p" % state_file_crit
+    >>> p_crit = subprocess.Popen(cmd_crit.split(), stdout=subprocess.PIPE)
+    >>> p_crit.stdout.read()
+    'CRIT: delay : 34827, sequence number : 59012|delayed=34827s;3600;21600;;\n'
 
-    >>> cmd_crit_non_exist_file = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file src/paulla/checkplanetdiff/tests/state_non_existant.txt"
+Non existant state file returns CRITICAL
+-----------------------------------------
+
+    >>> cmd_crit_non_exist_file = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file src/non_existant.txt"
     >>> p_crit_nonexist = subprocess.Popen(cmd_crit_non_exist_file.split(), stdout=subprocess.PIPE)
 
-Status code is 3 -> UNKNOWN
+Status code is 2 -> CRITICAL
 
     >>> p_crit_nonexist.wait()
-    3
+    2
 
 String output
 
     >>> p_crit_nonexist.stdout.read()
-    'UNKNOWN: src/paulla/checkplanetdiff/tests/state_non_existant.txt filestate not found\n'
+    'CRIT: delay : 21601, sequence number : 0\n'
+
+with perfdata option
+
+    >>> cmd_crit_non_exist_file = "bin/test_check_planetdiff -w 0.0:3600.0 -c 0.0:21600.0 --state-file src/non_existant.txt -p"
+    >>> p_crit_nonexist = subprocess.Popen(cmd_crit_non_exist_file.split(), stdout=subprocess.PIPE)
+    >>> p_crit_nonexist.stdout.read()
+    'CRIT: delay : 21601, sequence number : 0|delayed=21601s;3600;21600;;\n'
+
