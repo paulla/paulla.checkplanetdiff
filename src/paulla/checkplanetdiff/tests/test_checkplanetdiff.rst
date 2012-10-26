@@ -1,23 +1,9 @@
-
-================================================
 Nagios like' synchronise delay OSM Planet check
 =================================================
 
 
-necessary stuff
-
-    >>> import glob
-    >>> import subprocess
-    >>> from datetime import datetime
-    >>> from pprint import pprint
-
-    >>> def print_lines_from_file(filename):
-    ...     with open(filename) as state_file:
-    ...         return state_file.read().splitlines()
-    ...
-
 Use case
-==========
+
 
 The check is simple and robust, no database query.
 
@@ -36,6 +22,20 @@ Real check is datetime.datetime.utcnow()
 Warning and critical thresholds are respectively 3600 and 21600 seconds (1 and 6 hours)
 
 Time to work
+
+necessary stuff
+
+    >>> import glob
+    >>> import subprocess
+    >>> from datetime import datetime
+    >>> from pprint import pprint
+
+ ::
+
+    >>> def print_lines_from_file(filename):
+    ...     with open(filename) as state_file:
+    ...         return state_file.read().splitlines()
+    ...
 
 Less than 1 hour returns OK
 --------------------------------
