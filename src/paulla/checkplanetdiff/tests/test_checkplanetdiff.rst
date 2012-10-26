@@ -15,7 +15,7 @@ We fake 3 state files with three different timestamp (see tests/ directory).
 
 We have to fake now according to tests files states.
 
-    >>> now = datetime(2012, 10, 23, 20, 4, 30) # see test function
+now = datetime(2012, 10, 23, 20, 4, 30) # see test function
 
 Real check is datetime.datetime.utcnow()
 
