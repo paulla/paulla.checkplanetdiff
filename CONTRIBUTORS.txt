@@ -1,3 +1,15 @@
+
+Credits
+========
+|paulla|_
+
+  * `PauLLA <http://www.paulla.asso.fr>`_
+  * `Contact us <mailto:contact@paulla.asso.fr>`_
+
+.. |paulla| image:: http://www.paulla.asso.fr/logo.png
+.. _paulla:  http://www.paulla.asso.fr
+
+
 Contributors
 =============
 Jean-Philippe Camguilhem, Author
