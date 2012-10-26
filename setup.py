@@ -30,6 +30,7 @@ setup(name='paulla.checkplanetdiff',
                    'with the official OpenStreetMap Planet.'
                    ),
       long_description=long_description,
+      platforms = ["any"],
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

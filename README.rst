@@ -4,6 +4,30 @@ Introduction
 ============
 
 
+check_planet.diff is a 'Nagios like' (Nagios|Icinga|Centreon|Shinken) probe checking the delay of your OSM Planet with offical, based on minute-diff state files.
+
+More infos here http://wiki.openstreetmap.org/wiki/Minutely_Mapnik
+
+
+Install
+-------
+
+easy_install | pip witthin or not a virtualenv ::
+
+    tool paulla.check_planetdiff
+
+zc.buildout users ::
+
+    just add paulla.check_planetdiff to your eggs list as usual.
+
+You could simply run tests with::
+ 
+ bin/python setup.py test
+
+Mayba add a symbolic link from bin/check_planetdiff to your nagios/plugins/ directory.
+
+
+
 Nagios like configuration
 ---------------------------
 
