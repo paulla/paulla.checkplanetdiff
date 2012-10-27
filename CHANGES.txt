@@ -5,7 +5,7 @@ Changelog
 0.4 (2012-10-27)
 ----------------
 
-- Nothing changed yet.
+- fix README error
 
 
 0.3 (2012-10-27)

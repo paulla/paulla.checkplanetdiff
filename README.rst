@@ -8,6 +8,8 @@ check_planet.diff is a 'Nagios like' (Nagios|Icinga|Centreon|Shinken) probe chec
 
 More infos here http://wiki.openstreetmap.org/wiki/Minutely_Mapnik
 
+- Code repository: https://github.com/paulla/paulla.checkplanetdiff
+
 
 Install
 -------
