@@ -23,7 +23,7 @@ You could simply run install or tests with::
      bin/python setup.py install
      bin/python setup.py test
 
-Mayba add a symbolic link from bin/check_planetdiff to your nagios/plugins/ directory.
+Mayba add a symbolic link from bin/check_planetdiff to your nagios/plugins/ directory
 
 
 
@@ -32,7 +32,7 @@ Nagios like configuration
 
 check_planetdiff could be called localy or remotely via check_by_ssh or NRPE.
 
-here a sample definition to check remotely by ssh ::
+here a sample definition to check remotely by ssh 
 
 Command definition ::
     
