@@ -4,7 +4,7 @@ import sys
 
 from setuptools import setup, find_packages
 
-version = '0.2'
+version = '0.3.dev0'
 
 here = os.path.abspath(os.path.dirname(__file__))
 tests_dir = os.path.join(here, 'src/paulla/checkplanetdiff/tests/')
