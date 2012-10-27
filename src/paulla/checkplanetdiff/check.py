@@ -15,7 +15,8 @@ class CheckPlanetDiff(Plugin):
     """Plugin OSM Check delay."""
 
     statefile = make_option("--state-file", dest="state-file")
-    perfdata = make_option("-p", dest="perf-data", action="store_true")
+    perfdata = make_option("-p", help='return performance data', dest="perf-data",
+                            action="store_true")
 
     def get_last_update(self, now):
         """Get sequence number and diff time from statefile."""
@@ -37,7 +38,7 @@ class CheckPlanetDiff(Plugin):
         msg = 'delay : %d, sequence number : %s'
         delay = self.options.critical.end + 1
         seq_nber = 0
-        
+
         if os.path.isfile(self.options.statefile):
             delay, seq_nber = self.get_last_update(now)
 
