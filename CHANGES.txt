@@ -5,7 +5,7 @@ Changelog
 0.2 (2012-10-27)
 ----------------
 
-- Nothing changed yet.
+-  improve help usage and corresponding tests
 
 
 0.1 (2012-10-26)
